@@ -34,7 +34,7 @@
             // Get the GeoJSON feature properties
             const properties = geoJsonPoint.properties;
 
-            if (properties.type = "Point") {
+            if (geometry.type === "Point") {
               // Infantry Icon
               var infIcon = new L.icon({
                   iconUrl: properties.counterurl,
@@ -51,7 +51,7 @@
 
               // Return the marker
               return marker;
-            } else if (properties.type = "Polygon") {
+            } else if (geometry.type === "Polygon") {
               // Create a polygon
               var polygon = L.polygon(latlng, {color: 'red'})
 
