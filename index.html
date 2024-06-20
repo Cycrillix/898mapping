@@ -17,6 +17,7 @@
     <script>
       const key = 'iYjfmzXA4pqoCg4AY9DA';
       const map = L.map('map').setView([0, 0], 5); //starting position
+
       L.tileLayer(`https://api.maptiler.com/tiles/61322b42-e674-4887-a39e-9a8a7ea3be4e/{z}/{x}/{y}.png?key=${key}`,{ //style URL
         tileSize: 512,
         zoomOffset: -1,
@@ -33,21 +34,24 @@
             // Get the GeoJSON feature properties
             const properties = geoJsonPoint.properties;
 
-            // Infantry Icon
-            var infIcon = new L.icon({
-                iconUrl: properties.counterurl,
-                iconSize: [48, 36],
-                iconAnchor: [24, 18],
-            });
+            if (properties.type = "Point") {
+              // Infantry Icon
+              var infIcon = new L.icon({
+                  iconUrl: properties.counterurl,
+                  iconSize: [48, 36],
+                  iconAnchor: [24, 18],
+              });
 
-            // Create a marker with the icon
-            const marker = L.marker(latlng, { icon: infIcon });
+              // Create a marker with the icon
+              const marker = L.marker(latlng, { icon: infIcon });
 
-            // Create a popup with the "name" property
-            const popupContent = "<b>" + properties.name + "</b><br> Manpower: " + properties.manpower;
-            marker.bindPopup(popupContent);
-            // Return the marker
-            return marker;
+              // Create a popup with the "name" property
+              const popupContent = "<b>" + properties.name + "</b><br> Manpower: " + properties.manpower;
+              marker.bindPopup(popupContent);
+
+              // Return the marker
+              return marker;
+            }
           }
         }).addTo(map);
       }
