@@ -51,6 +51,9 @@
 
               // Return the marker
               return marker;
+            } else if (properties.type = "Polygon") {
+              const popupContent = "<b>" + properties.name;
+              polygon.bindPopup(popupContent)
             }
           }
         }).addTo(map);
