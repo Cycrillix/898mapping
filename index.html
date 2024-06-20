@@ -34,34 +34,22 @@
             // Get the GeoJSON feature properties
             const properties = geoJsonPoint.properties;
 
-            if (properties.type === "Point") {
-              // Infantry Icon
-              var infIcon = new L.icon({
-                  iconUrl: properties.counterurl,
-                  iconSize: [48, 36],
-                  iconAnchor: [24, 18],
-              });
+            // Infantry Icon
+            var infIcon = new L.icon({
+                iconUrl: properties.counterurl,
+                iconSize: [48, 36],
+                iconAnchor: [24, 18],
+            });
 
-              // Create a marker with the icon
-              const marker = L.marker(latlng, { icon: infIcon });
+            // Create a marker with the icon
+            const marker = L.marker(latlng, { icon: infIcon });
 
-              // Create a popup with the "name" property
-              const popupContent = "<b>" + properties.name + "</b><br> Manpower: " + properties.manpower;
-              marker.bindPopup(popupContent);
+            // Create a popup with the "name" property
+            const popupContent = "<b>" + properties.name + "</b><br> Manpower: " + properties.manpower;
+            marker.bindPopup(popupContent);
 
-              // Return the marker
-              return marker;
-            } else if (properties.type === "Polygon") {
-              // Create a polygon
-              const polygon = L.polygon(latlng, {color: 'red'})
-
-              // Create a popup with the "name" property
-              const popupContent = "<b>" + properties.name + "</b>";
-              polygon.bindPopup(popupContent);
-
-              // Return the polygon
-              return polygon;
-            }
+            // Return the marker
+            return marker;
           }
         }).addTo(map);
       }
@@ -69,5 +57,4 @@
       loadGeoJSON();
     </script>
   </body>
-</html>
 </html>
