@@ -22,7 +22,7 @@
         style: "6850ab04-dceb-4e70-aeb9-961009c6ba6a", //optional
       }).addTo(map);
 
-      const leafIcon = new L.icon({
+      const infIcon = new L.icon({
         iconUrl: 'https://cdn.discordapp.com/attachments/613409785521373185/1253091554588102846/UmsuFusiliers.png?ex=667497f3&is=66734673&hm=7ade6f160b13f059b352c2f2d76a6465e139c8cb98238ac5193349140cef3e0f&',
         iconSize: [100, 50],
         iconAnchor: [50, 25],
@@ -34,7 +34,7 @@
         L.geoJSON(geoJSON, {
           pointToLayer: function (geoJsonPoint, latlng) {
             // Create a marker with the custom icon
-            const marker = L.marker(latlng, { icon: leafIcon });
+            const marker = L.marker(latlng, { icon: infIcon });
 
             // Get the GeoJSON feature properties
             const properties = geoJsonPoint.properties;
