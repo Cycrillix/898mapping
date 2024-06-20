@@ -53,7 +53,7 @@
               return marker;
             } else if (properties.type === "Polygon") {
               // Create a polygon
-              const polygon = L.polygon(latlng);
+              var polygon = L.polygon(latlngs, {color: 'red'})
 
               // Create a popup with the "name" property
               const popupContent = "<b>" + properties.name + "</b>";
