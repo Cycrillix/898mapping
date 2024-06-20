@@ -25,21 +25,24 @@
         crossOrigin: true
       }).addTo(map);
 
-      const infIcon = new L.icon({
-        iconUrl: 'https://cdn.discordapp.com/attachments/613409785521373185/1253091554588102846/UmsuFusiliers.png?ex=667497f3&is=66734673&hm=7ade6f160b13f059b352c2f2d76a6465e139c8cb98238ac5193349140cef3e0f&',
-        iconSize: [100, 50],
-        iconAnchor: [50, 25],
-      });
       async function loadGeoJSON() {
         const response = await fetch(`https://api.maptiler.com/data/8af52467-4278-4524-acc6-9851a67dbf1a/features.json?key=${key}`);
         const geoJSON = await response.json();
         L.geoJSON(geoJSON, {
           pointToLayer: function (geoJsonPoint, latlng) {
-            // Create a marker with the custom icon
-            const marker = L.marker(latlng, { icon: infIcon });
-
             // Get the GeoJSON feature properties
             const properties = geoJsonPoint.properties;
+
+            // Infantry Icon
+            var infIcon = new L.icon({
+                iconUrl: properties.counterurl,
+                iconSize: [48, 24],
+                iconAnchor: [24, 12],
+            });
+
+            // Create a marker with the icon
+            const marker = L.marker(latlng, { icon: infIcon });
+
             // Create a popup with the "name" property
             const popupContent = "<b>" + properties.name + "</b><br> Manpower: " + properties.manpower;
             marker.bindPopup(popupContent);
@@ -48,6 +51,7 @@
           }
         }).addTo(map);
       }
+
       loadGeoJSON();
     </script>
   </body>
