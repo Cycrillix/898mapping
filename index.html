@@ -17,9 +17,9 @@
     <script>
       const key = 'iYjfmzXA4pqoCg4AY9DA';
       const map = L.map('map').setView([0, 0], 8);
-      const mtLayer = L.maptilerLayer('https://api.maptiler.com/tiles/61322b42-e674-4887-a39e-9a8a7ea3be4e/{z}/{x}/{y}.png?key=${key}`,{
+      const mtLayer = L.maptilerLayer({
         apiKey: key,
-        style: "6850ab04-dceb-4e70-aeb9-961009c6ba6a", //optional
+        style: "61322b42-e674-4887-a39e-9a8a7ea3be4e", //optional
       }).addTo(map);
 
       const infIcon = new L.icon({
