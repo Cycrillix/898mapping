@@ -34,7 +34,7 @@
             // Get the GeoJSON feature properties
             const properties = geoJsonPoint.properties;
 
-            if (properties.type = "Point") {
+            if (properties.type === "Point") {
               // Infantry Icon
               var infIcon = new L.icon({
                   iconUrl: properties.counterurl,
@@ -51,12 +51,14 @@
 
               // Return the marker
               return marker;
-            } else if (properties.type = "Polygon") {
+            } else if (properties.type === "Polygon") {
               // Create a polygon
               const polygon = L.polygon(latlng);
+
               // Create a popup with the "name" property
-              const popupContent = "<b>" + properties.name;
-              polygon.bindPopup(popupContent)
+              const popupContent = "<b>" + properties.name + "</b>";
+              polygon.bindPopup(popupContent);
+
               // Return the polygon
               return polygon;
             }
