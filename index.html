@@ -52,8 +52,13 @@
               // Return the marker
               return marker;
             } else if (properties.type = "Polygon") {
+              // Create a polygon
+              const polygon = L.polygon(latlng);
+              // Create a popup with the "name" property
               const popupContent = "<b>" + properties.name;
               polygon.bindPopup(popupContent)
+              // Return the polygon
+              return polygon;
             }
           }
         }).addTo(map);
