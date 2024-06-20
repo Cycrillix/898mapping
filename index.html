@@ -33,6 +33,7 @@
           pointToLayer: function (geoJsonPoint, latlng) {
             // Get the GeoJSON feature properties
             const properties = geoJsonPoint.properties;
+            const type = geoJsonPoint.type;
 
             if (geometry.type === "Point") {
               // Infantry Icon
