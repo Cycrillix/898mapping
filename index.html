@@ -45,7 +45,7 @@
             const marker = L.marker(latlng, { icon: infIcon });
 
             // Create a popup with the "name" property
-            const popupContent = "<b>" + properties.name + "</b><br> Manpower: " + properties.manpower;
+            const popupContent = "<b>" + properties.name + "</b><br> Part of " + properties.part_of;
             marker.bindPopup(popupContent);
 
             // Return the marker
